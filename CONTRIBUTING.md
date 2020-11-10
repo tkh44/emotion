@@ -1,6 +1,6 @@
 ## Prerequisites
 
-- [Node.js](http://nodejs.org/) >= v7 must be installed.
+- [Node.js](http://nodejs.org/) >= v7 <= 12 must be installed.
 - [Yarn](https://yarnpkg.com/en/docs/install)
 
 ## Installation

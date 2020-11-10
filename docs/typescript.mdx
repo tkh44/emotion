@@ -238,16 +238,18 @@ _styled.tsx_
 ```tsx
 import styled, { CreateStyled } from '@emotion/styled'
 
-type Theme = {
+const theme = {
   color: {
-    primary: string
-    positive: string
-    negative: string
+    primary: 'blue'
+    positive: 'green'
+    negative: 'red'
   }
   // ...
 }
 
-export default styled as CreateStyled<Theme>
+export type ThemeType = typeof theme
+
+export default styled as CreateStyled<ThemeType>
 ```
 
 _Button.tsx_
@@ -263,3 +265,5 @@ const Button = styled('button')`
 
 export default Button
 ```
+
+Note that the `export type ThemeType ...` statement above allows you to import the ThemeType for use with the `useTheme()` hook.
