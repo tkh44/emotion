@@ -1,8 +1,15 @@
 // @flow
 import * as React from 'react'
 
-// $FlowFixMe
-let impls = require('./implementations/*/index.js')
+import * as emotionCssFunc from './implementations/emotion-css-func'
+import * as emotionCssProp from './implementations/emotion-css-prop'
+import * as emotionStyled from './implementations/emotion-styled'
+
+let impls = {
+  'emotion-css-func': emotionCssFunc,
+  'emotion-css-prop': emotionCssProp,
+  'emotion-styled': emotionStyled
+}
 
 console.log(impls)
 

@@ -8,6 +8,7 @@ site/build
 package-lock.json
 .DS_Store
 .cache
+.parcel-cache
 public/
 !playgrounds/cra/public
 .env
