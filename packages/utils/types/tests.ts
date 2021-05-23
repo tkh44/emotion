@@ -1,23 +1,30 @@
+/* eslint-disable */
 import {
-  EmotionCache,
-  RegisteredCache,
-  SerializedStyles,
-  StyleSheet,
   getRegisteredStyles,
   insertStyles,
   isBrowser
 } from '@emotion/utils'
 
+import {
+  EmotionCache,
+  RegisteredCache,
+} from '@emotion/utils/dist/declarations/src/types'
+
+import { EmotionCache as OldEmotionCache, RegisteredCache as OldRegisteredCache } from "./old"
+
 declare const testCache: EmotionCache
 declare const testRegisteredCache: RegisteredCache
+
+const oldEmotionCache: OldEmotionCache = testCache
+const oldRegisteredCache: OldRegisteredCache = testRegisteredCache
 
 getRegisteredStyles(testRegisteredCache, [], 'abc')
 getRegisteredStyles(testRegisteredCache, [], 'abc def')
 getRegisteredStyles(testRegisteredCache, [], 'dead end')
 getRegisteredStyles(testRegisteredCache, ['color: red;'], 'black parade')
-// $ExpectError
+// @ts-expect-error
 getRegisteredStyles()
-// $ExpectError
+// @ts-expect-error
 getRegisteredStyles(testRegisteredCache)
 
 insertStyles(
@@ -28,18 +35,18 @@ insertStyles(
   },
   false
 )
-// $ExpectError
+// @ts-expect-error
 insertStyles()
-// $ExpectError
+// @ts-expect-error
 insertStyles(testCache)
-// $ExpectError
+// @ts-expect-error
 insertStyles(testCache, {})
-// $ExpectError
+// @ts-expect-error
 insertStyles(testCache, {
   name: 'abc',
   styles: 'font-size: 18px;'
 })
 
 const test0: boolean = isBrowser
-// $ExpectError
+// @ts-expect-error
 const test1: number = isBrowser

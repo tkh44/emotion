@@ -1,7 +1,6 @@
-// @flow
 import type { RegisteredCache, EmotionCache, SerializedStyles } from './types'
 
-const isBrowser = typeof document !== 'undefined'
+export const isBrowser = typeof document !== 'undefined'
 
 export function getRegisteredStyles(
   registered: RegisteredCache,
@@ -44,7 +43,7 @@ export const insertStyles = (
   }
   if (cache.inserted[serialized.name] === undefined) {
     let stylesForSSR = ''
-    let current = serialized
+    let current: SerializedStyles | undefined = serialized
     do {
       let maybeStyles = cache.insert(
         serialized === current ? `.${className}` : '',

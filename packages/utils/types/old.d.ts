@@ -1,5 +1,5 @@
 // Definitions by: Junyoung Clare Jang <https://github.com/Ailrun>
-// TypeScript Version: 2.2
+// TypeScript Version: 4.2.4
 
 export interface RegisteredCache {
   [key: string]: string
@@ -38,12 +38,14 @@ export interface SerializedStyles {
   next?: SerializedStyles
 }
 
-export const isBrowser: boolean
+export let isBrowser: boolean
+
 export function getRegisteredStyles(
   registered: RegisteredCache,
   registeredStyles: Array<string>,
   classNames: string
 ): string
+
 export function insertStyles(
   cache: EmotionCache,
   serialized: SerializedStyles,

@@ -1,19 +1,18 @@
-// @flow
 import type { StyleSheet } from '@emotion/sheet'
 
-export type RegisteredCache = { [string]: string }
+export type RegisteredCache = Record<string, string>
 
 export type Interpolation = any
 
-export type SerializedStyles = {|
+export type SerializedStyles = {
   name: string,
   styles: string,
   map?: string,
   next?: SerializedStyles
-|}
+}
 
 export type EmotionCache = {
-  inserted: { [string]: string | true },
+  inserted: Record<string, string | boolean>,
   registered: RegisteredCache,
   sheet: StyleSheet,
   key: string,

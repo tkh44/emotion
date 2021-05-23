@@ -6,3 +6,4 @@ stylis.min.js
 /demo/dist
 /packages/site/build
 flow-typed/
+/packages/utils/**/*.ts

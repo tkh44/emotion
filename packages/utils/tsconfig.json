@@ -7,6 +7,7 @@
       "es6",
       "dom"
     ],
+    "declaration": true,
     "module": "commonjs",
     "noEmit": true,
     "noImplicitAny": true,
@@ -21,7 +22,7 @@
     "types": []
   },
   "include": [
-    "./*.ts",
-    "./*.tsx"
+    "./src/*.ts",
+    "./src/*.tsx"
   ]
 }
