@@ -485,6 +485,4 @@ const props = {
   autofocus: true
 }
 // eslint-disable-next-line import/no-commonjs
-module.exports = `/^((${Object.keys(props).join(
-  '|'
-)})|(([Dd][Aa][Tt][Aa]|[Aa][Rr][Ii][Aa]|x)-.*))$/`
+module.exports = JSON.stringify(JSON.stringify(props))
