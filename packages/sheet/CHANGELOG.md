@@ -1,5 +1,11 @@
 # @emotion/sheet
 
+## 1.0.2
+
+### Patch Changes
+
+- [#2393](https://github.com/emotion-js/emotion/pull/2393) [`405af5ca`](https://github.com/emotion-js/emotion/commit/405af5ca01dcc0cac64227db082ce3f483e1bb46) Thanks [@layershifter](https://github.com/layershifter)! - Do not log failed rule insertions in the speedy mode for even more vendor-prefixed pseudo-elements/classes like `:-moz-focus-inner`, `:-moz-focusring`, and `:-ms-clear`.
+
 ## 1.0.1
 
 ### Patch Changes
