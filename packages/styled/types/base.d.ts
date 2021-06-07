@@ -2,7 +2,11 @@
 // TypeScript Version: 3.2
 
 import * as React from 'react'
-import { ComponentSelector, Interpolation } from '@emotion/serialize'
+import {
+  ComponentSelector,
+  Interpolation,
+  InterpolationPrimitive
+} from '@emotion/serialize'
 import { PropsOf, DistributiveOmit, Theme } from '@emotion/react'
 
 export {
@@ -23,9 +27,11 @@ export interface FilteringStyledOptions<
   target?: string
 }
 
-export interface StyledOptions<Props> {
+export interface StyledOptions<Props = null> {
   label?: string
-  shouldForwardProp?(propName: PropertyKey): boolean
+  shouldForwardProp?(
+    propName: Props extends null ? PropertyKey : keyof Props
+  ): boolean
   target?: string
 }
 
