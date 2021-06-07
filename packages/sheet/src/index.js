@@ -155,7 +155,12 @@ export class StyleSheet {
 
   flush() {
     // $FlowFixMe
-    this.tags.forEach(tag => tag.parentNode.removeChild(tag))
+    this.tags.forEach(tag => {
+      const parent = tag.parentNode;
+      if (parent) {
+        tag.parentNode.removeChild(tag)
+      }
+    })
     this.tags = []
     this.ctr = 0
     if (process.env.NODE_ENV !== 'production') {
