@@ -1,10 +1,9 @@
 import 'react'
-import { Interpolation } from '@emotion/serialize'
-import { Theme } from './index'
+import { Theme, ReactInterpolation } from './index'
 
 type WithConditionalCSSProp<P> = 'className' extends keyof P
   ? string extends P['className' & keyof P]
-    ? { css?: Interpolation<Theme> }
+    ? { css?: ReactInterpolation<Theme> }
     : {}
   : {}
 
@@ -34,7 +33,7 @@ export namespace EmotionJSX {
 
   type IntrinsicElements = {
     [K in keyof ReactJSXIntrinsicElements]: ReactJSXIntrinsicElements[K] & {
-      css?: Interpolation<Theme>
+      css?: ReactInterpolation<Theme>
     }
   }
 }
