@@ -1,6 +1,6 @@
 # @emotion/babel-preset-css-prop
 
-> A Babel preset to automatically enable Emotion's css prop when using the classic JSX runtime. If you want to use [the new JSX runtimes](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html) please do not use this preset but rather just include our [`@emotion/babel-plugin`](/packages/babel-plugin) directly and follow instructions for configuring the new JSX runtimes [here](/docs/css-prop.mdx##babel-preset).
+> A Babel preset to automatically enable Emotion's css prop when using the classic JSX runtime. If you want to use [the new JSX runtimes](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html) please do not use this preset but rather just include our [`@emotion/babel-plugin`](https://github.com/emotion-js/emotion/tree/master/packages/babel-plugin) directly and follow instructions for configuring the new JSX runtimes [here](https://github.com/emotion-js/emotion/blob/master/docs/css-prop.mdx#babel-preset).
 
 - [@emotion/babel-preset-css-prop](#emotionbabel-preset-css-prop)
   - [Install](#install)
