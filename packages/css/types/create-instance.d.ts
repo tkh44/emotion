@@ -14,7 +14,7 @@ export {
 
 export { EmotionCache, Options }
 
-export interface ArrayClassNamesArg extends Array<ClassNamesArg> {}
+export interface ArrayClassNamesArg extends ReadonlyArray<ClassNamesArg> {}
 export type ClassNamesArg =
   | undefined
   | null
