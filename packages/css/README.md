@@ -11,7 +11,7 @@ The [@emotion/css](https://www.npmjs.com/package/@emotion/css) package is framew
   - [Animation Keyframes — `keyframes`](#animation-keyframes)
   - [Composing Class Names — `cx`](#cx)
 - [Custom Instances](#custom-instances)
-- [Server Side Rendering](https://emotion.sh/docs/ssr#api)
+- [Server Side Rendering](#server-side-rendering)
 - [Babel Plugin](https://emotion.sh/docs/@emotion/babel-plugin)
 
 ## Quick Start
@@ -317,6 +317,48 @@ export const {
 - Use emotion with a container different than `document.head` for style elements
 
 - Using emotion with custom stylis plugins
+
+## Server Side Rendering
+
+### Advanced Approach
+
+```js
+import http from "http"
+import { extractCritical } from "@emotion/server"
+import { css } from "@emotion/css"
+
+const style = css({
+  color: "pink",
+  padding: 0
+})
+
+const element = `
+<p class="${style}">Hello World!</p>
+`
+
+let critical = extractCritical(element)
+
+http
+  .createServer(function (req, res) {
+    res.writeHead(200, { "Content-Type": "text/html" })
+    res.end(`
+      <!DOCTYPE html>
+      <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>My site</title>
+            <style data-emotion="${critical.ids.join(" ")}">${critical.css}</style>
+        </head>
+        <body>
+            <div id="root">${critical.html}</div>
+        </body>
+      </html>
+    `)
+  })
+  .listen(8080)
+```
 
 ## Multiple instances in a single app example
 
