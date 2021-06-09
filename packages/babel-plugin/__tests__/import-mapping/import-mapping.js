@@ -19,6 +19,9 @@ babelTester('import mapping', __dirname, {
             someCssFromCore: {
               canonicalImport: ['@emotion/react', 'css']
             },
+            someKeyframesFromCore: {
+              canonicalImport: ['@emotion/react', 'keyframes']
+            },
             SomeGlobalFromCore: {
               canonicalImport: ['@emotion/react', 'Global']
             }
@@ -27,6 +30,9 @@ babelTester('import mapping', __dirname, {
           'package-three': {
             something: {
               canonicalImport: ['@emotion/css', 'css']
+            },
+            keyframes: {
+              canonicalImport: ['@emotion/css', 'keyframes']
             }
           },
           'package-four': {

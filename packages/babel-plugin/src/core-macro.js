@@ -11,11 +11,13 @@ export const transformCssCallExpression = ({
   babel,
   path,
   sourceMap,
+  isKeyframes = false,
   annotateAsPure = true
 }: {
   state: *,
   babel: *,
   path: *,
+  isKeyframes?: boolean,
   sourceMap?: string,
   annotateAsPure?: boolean
 }) => {
@@ -23,6 +25,7 @@ export const transformCssCallExpression = ({
     babel,
     state,
     path,
+    isKeyframes,
     shouldLabel: true,
     sourceMap
   })
@@ -127,6 +130,23 @@ let cssTransformer = ({
   transformCssCallExpression({ babel, state, path: reference.parentPath })
 }
 
+let keyframesTransformer = ({
+  state,
+  babel,
+  reference
+}: {
+  state: any,
+  babel: any,
+  reference: any
+}) => {
+  transformCssCallExpression({
+    babel,
+    state,
+    path: reference.parentPath,
+    isKeyframes: true
+  })
+}
+
 let globalTransformer = ({
   state,
   babel,
@@ -190,6 +210,7 @@ export const transformers = {
   // instead we use it as a hint to enable css prop optimization
   jsx: () => {},
   css: cssTransformer,
+  keyframes: keyframesTransformer,
   Global: globalTransformer
 }
 

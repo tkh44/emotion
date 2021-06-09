@@ -1,5 +1,131 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`import mapping emotion-css-keyframes 1`] = `
+"import { keyframes } from 'package-three'
+
+keyframes\`
+  from, 20%, 53%, 80%, to {
+    transform: translate3d(0,0,0);
+  }
+
+  40%, 43% {
+    transform: translate3d(0, -30px, 0);
+  }
+
+  70% {
+    transform: translate3d(0, -15px, 0);
+  }
+
+  90% {
+    transform: translate3d(0,-4px,0);
+  }
+\`
+
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+function _EMOTION_STRINGIFIED_CSS_ERROR__() { return \\"You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop).\\"; }
+
+import { keyframes } from 'package-three';
+
+/*#__PURE__*/
+keyframes(process.env.NODE_ENV === \\"production\\" ? {
+  name: \\"w3sfyc\\",
+  styles: \\"from,20%,53%,80%,to{transform:translate3d(0,0,0);}40%,43%{transform:translate3d(0, -30px, 0);}70%{transform:translate3d(0, -15px, 0);}90%{transform:translate3d(0,-4px,0);}\\"
+} : {
+  name: \\"w3sfyc\\",
+  styles: \\"from,20%,53%,80%,to{transform:translate3d(0,0,0);}40%,43%{transform:translate3d(0, -30px, 0);}70%{transform:translate3d(0, -15px, 0);}90%{transform:translate3d(0,-4px,0);}\\",
+  map: \\"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImVtb3Rpb24tY3NzLWtleWZyYW1lcy5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFUyIsImZpbGUiOiJlbW90aW9uLWNzcy1rZXlmcmFtZXMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBrZXlmcmFtZXMgfSBmcm9tICdwYWNrYWdlLXRocmVlJ1xuXG5rZXlmcmFtZXNgXG4gIGZyb20sIDIwJSwgNTMlLCA4MCUsIHRvIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZTNkKDAsMCwwKTtcbiAgfVxuXG4gIDQwJSwgNDMlIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZTNkKDAsIC0zMHB4LCAwKTtcbiAgfVxuXG4gIDcwJSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCgwLCAtMTVweCwgMCk7XG4gIH1cblxuICA5MCUge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlM2QoMCwtNHB4LDApO1xuICB9XG5gXG4iXX0= */\\",
+  toString: _EMOTION_STRINGIFIED_CSS_ERROR__
+});"
+`;
+
+exports[`import mapping emotion-react-keyframes 1`] = `
+"import * as React from 'react'
+import { someCssFromCore, someKeyframesFromCore } from 'package-two'
+
+const numForty = 40
+const numThirty = 30
+
+const bounce = someKeyframesFromCore\`
+  from, 20%, 53%, 80%, to {
+    transform: translate3d(0,0,0);
+  }
+
+  40%, 43% {
+    transform: translate3d(0, -30px, 0);
+  }
+
+  \${numForty + numThirty}% {
+    transform: translate3d(0, -15px, 0);
+  }
+
+  90% {
+    transform: translate3d(0,-4px,0);
+  }
+\`
+
+const gift = someKeyframesFromCore\`
+  from {
+    transform: translate3d(0,0,0);
+  }
+
+  to {
+    transform: translate3d(0,-4px,0);
+  }
+\`
+
+const Comp = () => (
+  <div
+    className={someCssFromCore\`
+      animation: \${bounce} 1s ease infinite;
+    \`}
+  >
+    ichenlei with emotion
+  </div>
+)
+
+const Comp2 = () => (
+  <div
+    className={someCssFromCore\`
+      animation: \${gift} 1s ease infinite;
+    \`}
+  >
+    ichenlei with emotion
+  </div>
+)
+
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+function _EMOTION_STRINGIFIED_CSS_ERROR__() { return \\"You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop).\\"; }
+
+import * as React from 'react';
+import { someCssFromCore, someKeyframesFromCore } from 'package-two';
+const numForty = 40;
+const numThirty = 30;
+const bounce = /*#__PURE__*/someKeyframesFromCore(\\"from,20%,53%,80%,to{transform:translate3d(0,0,0);}40%,43%{transform:translate3d(0, -30px, 0);}\\", numForty + numThirty, \\"%{transform:translate3d(0, -15px, 0);}90%{transform:translate3d(0,-4px,0);}\\" + (process.env.NODE_ENV === \\"production\\" ? \\"\\" : \\"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImVtb3Rpb24tcmVhY3Qta2V5ZnJhbWVzLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQU1vQyIsImZpbGUiOiJlbW90aW9uLXJlYWN0LWtleWZyYW1lcy5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCAqIGFzIFJlYWN0IGZyb20gJ3JlYWN0J1xuaW1wb3J0IHsgc29tZUNzc0Zyb21Db3JlLCBzb21lS2V5ZnJhbWVzRnJvbUNvcmUgfSBmcm9tICdwYWNrYWdlLXR3bydcblxuY29uc3QgbnVtRm9ydHkgPSA0MFxuY29uc3QgbnVtVGhpcnR5ID0gMzBcblxuY29uc3QgYm91bmNlID0gc29tZUtleWZyYW1lc0Zyb21Db3JlYFxuICBmcm9tLCAyMCUsIDUzJSwgODAlLCB0byB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCgwLDAsMCk7XG4gIH1cblxuICA0MCUsIDQzJSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCgwLCAtMzBweCwgMCk7XG4gIH1cblxuICAke251bUZvcnR5ICsgbnVtVGhpcnR5fSUge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlM2QoMCwgLTE1cHgsIDApO1xuICB9XG5cbiAgOTAlIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZTNkKDAsLTRweCwwKTtcbiAgfVxuYFxuXG5jb25zdCBnaWZ0ID0gc29tZUtleWZyYW1lc0Zyb21Db3JlYFxuICBmcm9tIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZTNkKDAsMCwwKTtcbiAgfVxuXG4gIHRvIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZTNkKDAsLTRweCwwKTtcbiAgfVxuYFxuXG5jb25zdCBDb21wID0gKCkgPT4gKFxuICA8ZGl2XG4gICAgY2xhc3NOYW1lPXtzb21lQ3NzRnJvbUNvcmVgXG4gICAgICBhbmltYXRpb246ICR7Ym91bmNlfSAxcyBlYXNlIGluZmluaXRlO1xuICAgIGB9XG4gID5cbiAgICBpY2hlbmxlaSB3aXRoIGVtb3Rpb25cbiAgPC9kaXY+XG4pXG5cbmNvbnN0IENvbXAyID0gKCkgPT4gKFxuICA8ZGl2XG4gICAgY2xhc3NOYW1lPXtzb21lQ3NzRnJvbUNvcmVgXG4gICAgICBhbmltYXRpb246ICR7Z2lmdH0gMXMgZWFzZSBpbmZpbml0ZTtcbiAgICBgfVxuICA+XG4gICAgaWNoZW5sZWkgd2l0aCBlbW90aW9uXG4gIDwvZGl2PlxuKVxuIl19 */\\"));
+const gift = process.env.NODE_ENV === \\"production\\" ? {
+  name: \\"15er54a\\",
+  styles: \\"@keyframes 15er54a{from{transform:translate3d(0,0,0);}to{transform:translate3d(0,-4px,0);}}\\",
+  anim: 1
+} : {
+  name: \\"15er54a\\",
+  styles: \\"@keyframes 15er54a{from{transform:translate3d(0,0,0);}to{transform:translate3d(0,-4px,0);}}\\",
+  anim: 1,
+  map: \\"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImVtb3Rpb24tcmVhY3Qta2V5ZnJhbWVzLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQXdCa0MiLCJmaWxlIjoiZW1vdGlvbi1yZWFjdC1rZXlmcmFtZXMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgKiBhcyBSZWFjdCBmcm9tICdyZWFjdCdcbmltcG9ydCB7IHNvbWVDc3NGcm9tQ29yZSwgc29tZUtleWZyYW1lc0Zyb21Db3JlIH0gZnJvbSAncGFja2FnZS10d28nXG5cbmNvbnN0IG51bUZvcnR5ID0gNDBcbmNvbnN0IG51bVRoaXJ0eSA9IDMwXG5cbmNvbnN0IGJvdW5jZSA9IHNvbWVLZXlmcmFtZXNGcm9tQ29yZWBcbiAgZnJvbSwgMjAlLCA1MyUsIDgwJSwgdG8ge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlM2QoMCwwLDApO1xuICB9XG5cbiAgNDAlLCA0MyUge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlM2QoMCwgLTMwcHgsIDApO1xuICB9XG5cbiAgJHtudW1Gb3J0eSArIG51bVRoaXJ0eX0lIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZTNkKDAsIC0xNXB4LCAwKTtcbiAgfVxuXG4gIDkwJSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCgwLC00cHgsMCk7XG4gIH1cbmBcblxuY29uc3QgZ2lmdCA9IHNvbWVLZXlmcmFtZXNGcm9tQ29yZWBcbiAgZnJvbSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCgwLDAsMCk7XG4gIH1cblxuICB0byB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCgwLC00cHgsMCk7XG4gIH1cbmBcblxuY29uc3QgQ29tcCA9ICgpID0+IChcbiAgPGRpdlxuICAgIGNsYXNzTmFtZT17c29tZUNzc0Zyb21Db3JlYFxuICAgICAgYW5pbWF0aW9uOiAke2JvdW5jZX0gMXMgZWFzZSBpbmZpbml0ZTtcbiAgICBgfVxuICA+XG4gICAgaWNoZW5sZWkgd2l0aCBlbW90aW9uXG4gIDwvZGl2PlxuKVxuXG5jb25zdCBDb21wMiA9ICgpID0+IChcbiAgPGRpdlxuICAgIGNsYXNzTmFtZT17c29tZUNzc0Zyb21Db3JlYFxuICAgICAgYW5pbWF0aW9uOiAke2dpZnR9IDFzIGVhc2UgaW5maW5pdGU7XG4gICAgYH1cbiAgPlxuICAgIGljaGVubGVpIHdpdGggZW1vdGlvblxuICA8L2Rpdj5cbilcbiJdfQ== */\\",
+  toString: _EMOTION_STRINGIFIED_CSS_ERROR__
+};
+
+const Comp = () => <div className={/*#__PURE__*/someCssFromCore(\\"animation:\\", bounce, \\" 1s ease infinite;\\" + (process.env.NODE_ENV === \\"production\\" ? \\"\\" : \\";label:Comp;\\"), process.env.NODE_ENV === \\"production\\" ? \\"\\" : \\"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImVtb3Rpb24tcmVhY3Qta2V5ZnJhbWVzLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQW9DOEIiLCJmaWxlIjoiZW1vdGlvbi1yZWFjdC1rZXlmcmFtZXMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgKiBhcyBSZWFjdCBmcm9tICdyZWFjdCdcbmltcG9ydCB7IHNvbWVDc3NGcm9tQ29yZSwgc29tZUtleWZyYW1lc0Zyb21Db3JlIH0gZnJvbSAncGFja2FnZS10d28nXG5cbmNvbnN0IG51bUZvcnR5ID0gNDBcbmNvbnN0IG51bVRoaXJ0eSA9IDMwXG5cbmNvbnN0IGJvdW5jZSA9IHNvbWVLZXlmcmFtZXNGcm9tQ29yZWBcbiAgZnJvbSwgMjAlLCA1MyUsIDgwJSwgdG8ge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlM2QoMCwwLDApO1xuICB9XG5cbiAgNDAlLCA0MyUge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlM2QoMCwgLTMwcHgsIDApO1xuICB9XG5cbiAgJHtudW1Gb3J0eSArIG51bVRoaXJ0eX0lIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZTNkKDAsIC0xNXB4LCAwKTtcbiAgfVxuXG4gIDkwJSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCgwLC00cHgsMCk7XG4gIH1cbmBcblxuY29uc3QgZ2lmdCA9IHNvbWVLZXlmcmFtZXNGcm9tQ29yZWBcbiAgZnJvbSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCgwLDAsMCk7XG4gIH1cblxuICB0byB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCgwLC00cHgsMCk7XG4gIH1cbmBcblxuY29uc3QgQ29tcCA9ICgpID0+IChcbiAgPGRpdlxuICAgIGNsYXNzTmFtZT17c29tZUNzc0Zyb21Db3JlYFxuICAgICAgYW5pbWF0aW9uOiAke2JvdW5jZX0gMXMgZWFzZSBpbmZpbml0ZTtcbiAgICBgfVxuICA+XG4gICAgaWNoZW5sZWkgd2l0aCBlbW90aW9uXG4gIDwvZGl2PlxuKVxuXG5jb25zdCBDb21wMiA9ICgpID0+IChcbiAgPGRpdlxuICAgIGNsYXNzTmFtZT17c29tZUNzc0Zyb21Db3JlYFxuICAgICAgYW5pbWF0aW9uOiAke2dpZnR9IDFzIGVhc2UgaW5maW5pdGU7XG4gICAgYH1cbiAgPlxuICAgIGljaGVubGVpIHdpdGggZW1vdGlvblxuICA8L2Rpdj5cbilcbiJdfQ== */\\")}>
+    ichenlei with emotion
+  </div>;
+
+const Comp2 = () => <div className={/*#__PURE__*/someCssFromCore(\\"animation:\\", gift, \\" 1s ease infinite;\\" + (process.env.NODE_ENV === \\"production\\" ? \\"\\" : \\";label:Comp2;\\"), process.env.NODE_ENV === \\"production\\" ? \\"\\" : \\"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImVtb3Rpb24tcmVhY3Qta2V5ZnJhbWVzLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQThDOEIiLCJmaWxlIjoiZW1vdGlvbi1yZWFjdC1rZXlmcmFtZXMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgKiBhcyBSZWFjdCBmcm9tICdyZWFjdCdcbmltcG9ydCB7IHNvbWVDc3NGcm9tQ29yZSwgc29tZUtleWZyYW1lc0Zyb21Db3JlIH0gZnJvbSAncGFja2FnZS10d28nXG5cbmNvbnN0IG51bUZvcnR5ID0gNDBcbmNvbnN0IG51bVRoaXJ0eSA9IDMwXG5cbmNvbnN0IGJvdW5jZSA9IHNvbWVLZXlmcmFtZXNGcm9tQ29yZWBcbiAgZnJvbSwgMjAlLCA1MyUsIDgwJSwgdG8ge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlM2QoMCwwLDApO1xuICB9XG5cbiAgNDAlLCA0MyUge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlM2QoMCwgLTMwcHgsIDApO1xuICB9XG5cbiAgJHtudW1Gb3J0eSArIG51bVRoaXJ0eX0lIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZTNkKDAsIC0xNXB4LCAwKTtcbiAgfVxuXG4gIDkwJSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCgwLC00cHgsMCk7XG4gIH1cbmBcblxuY29uc3QgZ2lmdCA9IHNvbWVLZXlmcmFtZXNGcm9tQ29yZWBcbiAgZnJvbSB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCgwLDAsMCk7XG4gIH1cblxuICB0byB7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCgwLC00cHgsMCk7XG4gIH1cbmBcblxuY29uc3QgQ29tcCA9ICgpID0+IChcbiAgPGRpdlxuICAgIGNsYXNzTmFtZT17c29tZUNzc0Zyb21Db3JlYFxuICAgICAgYW5pbWF0aW9uOiAke2JvdW5jZX0gMXMgZWFzZSBpbmZpbml0ZTtcbiAgICBgfVxuICA+XG4gICAgaWNoZW5sZWkgd2l0aCBlbW90aW9uXG4gIDwvZGl2PlxuKVxuXG5jb25zdCBDb21wMiA9ICgpID0+IChcbiAgPGRpdlxuICAgIGNsYXNzTmFtZT17c29tZUNzc0Zyb21Db3JlYFxuICAgICAgYW5pbWF0aW9uOiAke2dpZnR9IDFzIGVhc2UgaW5maW5pdGU7XG4gICAgYH1cbiAgPlxuICAgIGljaGVubGVpIHdpdGggZW1vdGlvblxuICA8L2Rpdj5cbilcbiJdfQ== */\\")}>
+    ichenlei with emotion
+  </div>;"
+`;
+
 exports[`import mapping global 1`] = `
 "import * as React from 'react'
 import { SomeGlobalFromCore } from 'package-two'

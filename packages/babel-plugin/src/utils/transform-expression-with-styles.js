@@ -19,12 +19,14 @@ export let transformExpressionWithStyles = ({
   state,
   path,
   shouldLabel,
+  isKeyframes = false,
   sourceMap = ''
 }: {
   babel: *,
   state: *,
   path: *,
   shouldLabel: boolean,
+  isKeyframes?: boolean,
   sourceMap?: string
 }): * => {
   const autoLabel = state.opts.autoLabel || 'dev-only'
@@ -74,13 +76,27 @@ export let transformExpressionWithStyles = ({
       let cssString = path.node.arguments[0].value.replace(/;$/, '')
       let res = serializeStyles([
         `${cssString}${
-          label && autoLabel === 'always' ? `;label:${label};` : ''
+          !isKeyframes && label && autoLabel === 'always'
+            ? `;label:${label};`
+            : ''
         }`
       ])
-      let prodNode = t.objectExpression([
-        t.objectProperty(t.identifier('name'), t.stringLiteral(res.name)),
-        t.objectProperty(t.identifier('styles'), t.stringLiteral(res.styles))
-      ])
+      let prodNode
+      if (isKeyframes) {
+        prodNode = t.objectExpression([
+          t.objectProperty(t.identifier('name'), t.stringLiteral(res.name)),
+          t.objectProperty(
+            t.identifier('styles'),
+            t.stringLiteral(`@keyframes ${res.name}{${res.styles}}`)
+          ),
+          t.objectProperty(t.identifier('anim'), t.numericLiteral(1))
+        ])
+      } else {
+        prodNode = t.objectExpression([
+          t.objectProperty(t.identifier('name'), t.stringLiteral(res.name)),
+          t.objectProperty(t.identifier('styles'), t.stringLiteral(res.styles))
+        ])
+      }
 
       if (!state.emotionStringifiedCssId) {
         const uid = state.file.scope.generateUidIdentifier(
@@ -98,27 +114,50 @@ export let transformExpressionWithStyles = ({
         state.file.path.unshiftContainer('body', [cssObjectToString])
       }
 
-      if (label && autoLabel === 'dev-only') {
+      if (!isKeyframes && label && autoLabel === 'dev-only') {
         res = serializeStyles([`${cssString};label:${label};`])
       }
 
-      let devNode = t.objectExpression(
-        [
-          t.objectProperty(t.identifier('name'), t.stringLiteral(res.name)),
-          t.objectProperty(t.identifier('styles'), t.stringLiteral(res.styles)),
-          sourceMap &&
-            t.objectProperty(t.identifier('map'), t.stringLiteral(sourceMap)),
-          t.objectProperty(
-            t.identifier('toString'),
-            t.cloneNode(state.emotionStringifiedCssId)
-          )
-        ].filter(Boolean)
-      )
+      let devNode
+      if (isKeyframes) {
+        devNode = t.objectExpression(
+          [
+            t.objectProperty(t.identifier('name'), t.stringLiteral(res.name)),
+            t.objectProperty(
+              t.identifier('styles'),
+              t.stringLiteral(`@keyframes ${res.name}{${res.styles}}`)
+            ),
+            t.objectProperty(t.identifier('anim'), t.numericLiteral(1)),
+            sourceMap &&
+              t.objectProperty(t.identifier('map'), t.stringLiteral(sourceMap)),
+            t.objectProperty(
+              t.identifier('toString'),
+              t.cloneNode(state.emotionStringifiedCssId)
+            )
+          ].filter(Boolean)
+        )
+      } else {
+        devNode = t.objectExpression(
+          [
+            t.objectProperty(t.identifier('name'), t.stringLiteral(res.name)),
+            t.objectProperty(
+              t.identifier('styles'),
+              t.stringLiteral(res.styles)
+            ),
+            sourceMap &&
+              t.objectProperty(t.identifier('map'), t.stringLiteral(sourceMap)),
+            t.objectProperty(
+              t.identifier('toString'),
+              t.cloneNode(state.emotionStringifiedCssId)
+            )
+          ].filter(Boolean)
+        )
+      }
 
       return createNodeEnvConditional(t, prodNode, devNode)
     }
 
-    if (canAppendStrings && label) {
+    if (canAppendStrings && label && !isKeyframes) {
       const labelString = `;label:${label};`
 
       switch (autoLabel) {
@@ -136,6 +175,17 @@ export let transformExpressionWithStyles = ({
           break
       }
     }
+    // } else if (isKeyframes) {
+    //   if (
+    //     t.isStringLiteral(path.node.arguments[0]) &&
+    //     t.isStringLiteral(path.node.arguments[path.node.arguments.length - 1])
+    //   ) {
+    //     path.node.arguments[0].value = `@keyframes {${
+    //       path.node.arguments[0].value
+    //     }`
+    //     path.node.arguments[path.node.arguments.length - 1] += '}'
+    //   }
+    // }
 
     if (sourceMap) {
       let sourceMapConditional = createNodeEnvConditional(
