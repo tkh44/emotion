@@ -10,12 +10,13 @@ export type CSSProperties = CSS.PropertiesFallback<number | string>
 export type CSSPropertiesWithMultiValues = {
   [K in keyof CSSProperties]:
     | CSSProperties[K]
-    | Array<Extract<CSSProperties[K], string>>
+    | ReadonlyArray<Extract<CSSProperties[K], string>>
 }
 
 export type CSSPseudos = { [K in CSS.Pseudos]?: CSSObject }
 
-export interface ArrayCSSInterpolation extends Array<CSSInterpolation> {}
+export interface ArrayCSSInterpolation
+  extends ReadonlyArray<CSSInterpolation> {}
 
 export type InterpolationPrimitive =
   | null
@@ -51,7 +52,7 @@ export type Keyframes = {
 } & string
 
 export interface ArrayInterpolation<Props>
-  extends Array<Interpolation<Props>> {}
+  extends ReadonlyArray<Interpolation<Props>> {}
 
 export interface FunctionInterpolation<Props> {
   (props: Props): Interpolation<Props>
@@ -63,7 +64,7 @@ export type Interpolation<Props> =
   | FunctionInterpolation<Props>
 
 export function serializeStyles<Props>(
-  args: Array<TemplateStringsArray | Interpolation<Props>>,
+  args: ReadonlyArray<TemplateStringsArray | Interpolation<Props>>,
   registered: RegisteredCache,
   props?: Props
 ): SerializedStyles

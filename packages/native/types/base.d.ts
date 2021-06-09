@@ -32,7 +32,7 @@ export type ObjectInterpolation<
 
 export interface ArrayCSSInterpolation<
   StyleType extends ReactNativeStyle = ReactNativeStyle
-> extends Array<CSSInterpolation<StyleType>> {}
+> extends ReadonlyArray<CSSInterpolation<StyleType>> {}
 
 export type CSSInterpolation<
   StyleType extends ReactNativeStyle = ReactNativeStyle
@@ -41,7 +41,7 @@ export type CSSInterpolation<
 export interface ArrayInterpolation<
   MergedProps,
   StyleType extends ReactNativeStyle = ReactNativeStyle
-> extends Array<Interpolation<MergedProps, StyleType>> {}
+> extends ReadonlyArray<Interpolation<MergedProps, StyleType>> {}
 
 export interface FunctionInterpolation<
   MergedProps,

@@ -14,7 +14,7 @@ export {
 
 export { EmotionCache, Options }
 
-export interface ArrayClassNamesArg extends Array<ClassNamesArg> {}
+export interface ArrayClassNamesArg extends ReadonlyArray<ClassNamesArg> {}
 export type ClassNamesArg =
   | undefined
   | null
@@ -32,7 +32,7 @@ export interface Emotion {
   css(...args: Array<CSSInterpolation>): string
   cx(...classNames: Array<ClassNamesArg>): string
   flush(): void
-  hydrate(ids: Array<string>): void
+  hydrate(ids: ReadonlyArray<string>): void
   injectGlobal(
     template: TemplateStringsArray,
     ...args: Array<CSSInterpolation>
@@ -47,7 +47,7 @@ export interface Emotion {
   cache: EmotionCache
   merge(className: string): string
   getRegisteredStyles(
-    registeredStyles: Array<string>,
+    registeredStyles: ReadonlyArray<string>,
     className: string
   ): string
 }
