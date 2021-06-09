@@ -9,8 +9,10 @@
   },
   "files": [
     "src",
-    "dist"
+    "dist",
+    "types/*.d.ts"
   ],
+  "types": "types/index.d.ts",
   "license": "MIT",
   "dependencies": {
     "css-to-react-native": "^3.0.0"
