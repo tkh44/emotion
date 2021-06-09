@@ -5,6 +5,7 @@ import { graphql } from 'gatsby'
 import Layout from '../layouts'
 import * as markdownComponents from '../utils/markdown-styles'
 import Title from '../components/Title'
+import EthicalAd from '../components/EthicalAd'
 import { MDXProvider } from '@mdx-js/react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 

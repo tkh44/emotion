@@ -10,6 +10,7 @@ import Layout from '../layouts'
 import { graphql } from 'gatsby'
 import DocWrapper from '../components/DocWrapper'
 import Title from '../components/Title'
+import EthicalAd from '../components/EthicalAd'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 
@@ -106,6 +107,7 @@ export default class DocRoute extends React.Component<Props, DocRouteState> {
           sidebarOpen={this.state.sidebarOpen}
           setSidebarOpen={this.setSidebarOpen}
         >
+          <EthicalAd mediaQuery="(max-width: 52em)" data-ea-type="text" />
           <div
             css={{
               alignItems: 'center',

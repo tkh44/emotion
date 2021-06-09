@@ -8,9 +8,17 @@ export default function HTML(props) {
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script
+          async
+          src="https://media.ethicalads.io/media/client/ethicalads.min.js"
+        />
+        <script
           dangerouslySetInnerHTML={{
-            __html:
-              'window.searchError = function() {window.searchErrored = true;};window.searchLoaded = function() {};'
+            __html: [
+              'window.searchError = function() {window.searchErrored = true;};',
+              'window.searchLoaded = function() {};',
+              'window.hasDocumentCurrentScript = !!document.currentScript;',
+              'window.addEventListener("load", function () { window.hasDocumentCurrentScript && ethicalads.load(); });'
+            ].join('')
           }}
         />
         {props.headComponents}

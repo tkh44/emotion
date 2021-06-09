@@ -14,6 +14,7 @@ import { getDocMap, docList } from '../utils/misc'
 
 import DocMetadata from './DocMetadata'
 import Search from './Search'
+import EthicalAd from './EthicalAd'
 
 let space = constants.space
 const scaleAnimation = keyframes`
@@ -179,6 +180,7 @@ export default ({
               })}
             >
               <Search />
+              <EthicalAd mediaQuery="(min-width: 52em)" data-ea-type="image" />
               {docList.map(item => {
                 return (
                   <Match path="/docs/:docName" key={item.title}>
