@@ -40,16 +40,23 @@ export const createEmotionProps = (type: React.ElementType, props: Object) => {
   if (process.env.NODE_ENV !== 'production') {
     const error = new Error()
     if (error.stack) {
-      // chrome
+      // hooks|classes|ssr
       let match = error.stack.match(
-        /at (?:Object\.|Module\.|)(?:jsx|createEmotionProps).*\n\s+at (?:Object\.|)([A-Z][A-Za-z0-9$]+) /
+        /(^.+)\n.*(renderWithHooks|finishClassComponent|processChild)/m
       )
-      if (!match) {
-        // safari and firefox
-        match = error.stack.match(/.*\n([A-Z][A-Za-z0-9$]+)@/)
-      }
       if (match) {
-        newProps[labelPropName] = sanitizeIdentifier(match[1])
+        const componentLine = match[1]
+        // chrome
+        match = componentLine.match(
+          /at (?:Object\.|Module\.|)([A-Z][A-Za-z0-9$]+)/
+        )
+        if (!match) {
+          // safari and firefox
+          match = componentLine.match(/([A-Z][A-Za-z0-9$]+)@/)
+        }
+        if (match) {
+          newProps[labelPropName] = sanitizeIdentifier(match[1])
+        }
       }
     }
   }
