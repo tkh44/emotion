@@ -1,5 +1,5 @@
 // Definitions by: Junyoung Clare Jang <https://github.com/Ailrun>
-// TypeScript Version: 3.2
+// TypeScript Version: 3.7
 
 import * as React from 'react'
 import { ComponentSelector, Interpolation } from '@emotion/serialize'

@@ -1,4 +1,4 @@
-// TypeScript Version: 2.2
+// TypeScript Version: 3.7
 
 type UnaryFn<Arg, Return> = (arg: Arg) => Return
 

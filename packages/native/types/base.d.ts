@@ -1,5 +1,5 @@
 // Definitions by: Pat Sissons <https://github.com/patsissons>
-// TypeScript Version: 3.4
+// TypeScript Version: 3.7
 
 import { Theme } from '@emotion/react'
 import * as RN from 'react-native'
@@ -30,18 +30,18 @@ export type ObjectInterpolation<
   StyleType extends ReactNativeStyle = ReactNativeStyle
 > = StyleType
 
-export interface ArrayCSSInterpolation<
+export type ArrayCSSInterpolation<
   StyleType extends ReactNativeStyle = ReactNativeStyle
-> extends Array<CSSInterpolation<StyleType>> {}
+> = Array<CSSInterpolation<StyleType>>
 
 export type CSSInterpolation<
   StyleType extends ReactNativeStyle = ReactNativeStyle
 > = InterpolationPrimitive<StyleType> | ArrayCSSInterpolation<StyleType>
 
-export interface ArrayInterpolation<
+export type ArrayInterpolation<
   MergedProps,
   StyleType extends ReactNativeStyle = ReactNativeStyle
-> extends Array<Interpolation<MergedProps, StyleType>> {}
+> = Array<Interpolation<MergedProps, StyleType>>
 
 export interface FunctionInterpolation<
   MergedProps,

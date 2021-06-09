@@ -1,5 +1,5 @@
 // Definitions by: Pat Sissons <https://github.com/patsissons>
-// TypeScript Version: 3.4
+// TypeScript Version: 3.7
 
 import * as RN from 'react-native'
 import { Theme } from '@emotion/react'

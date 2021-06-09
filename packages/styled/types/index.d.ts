@@ -1,5 +1,5 @@
 // Definitions by: Junyoung Clare Jang <https://github.com/Ailrun>
-// TypeScript Version: 3.2
+// TypeScript Version: 3.7
 
 import { Theme } from '@emotion/react'
 import { CreateStyled as BaseCreateStyled, CreateStyledComponent } from './base'

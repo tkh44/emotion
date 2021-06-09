@@ -1,5 +1,5 @@
 // Definitions by: Junyoung Clare Jang <https://github.com/Ailrun>
-// TypeScript Version: 2.8
+// TypeScript Version: 3.7
 
 import { EmotionCache, Options } from '@emotion/cache'
 import { CSSInterpolation } from '@emotion/serialize'
@@ -14,7 +14,7 @@ export {
 
 export { EmotionCache, Options }
 
-export interface ArrayClassNamesArg extends Array<ClassNamesArg> {}
+export type ArrayClassNamesArg = Array<ClassNamesArg>
 export type ClassNamesArg =
   | undefined
   | null

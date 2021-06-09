@@ -1,5 +1,5 @@
 // Definitions by: Junyoung Clare Jang <https://github.com/Ailrun>
-// TypeScript Version: 2.8
+// TypeScript Version: 3.7
 
 import { RegisteredCache, SerializedStyles } from '@emotion/utils'
 import * as CSS from 'csstype'
@@ -15,7 +15,7 @@ export type CSSPropertiesWithMultiValues = {
 
 export type CSSPseudos = { [K in CSS.Pseudos]?: CSSObject }
 
-export interface ArrayCSSInterpolation extends Array<CSSInterpolation> {}
+export type ArrayCSSInterpolation = Array<CSSInterpolation>
 
 export type InterpolationPrimitive =
   | null
@@ -50,8 +50,7 @@ export type Keyframes = {
   toString: () => string
 } & string
 
-export interface ArrayInterpolation<Props>
-  extends Array<Interpolation<Props>> {}
+export type ArrayInterpolation<Props> = Array<Interpolation<Props>>
 
 export interface FunctionInterpolation<Props> {
   (props: Props): Interpolation<Props>
