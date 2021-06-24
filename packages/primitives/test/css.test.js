@@ -4,6 +4,19 @@ import { StyleSheet } from 'react-native'
 
 let returnArguments = (...args) => args
 
+// We're aliasing react-native to react-native-web for the tests (via `babel-plugin-react-native-web`),
+// but RNW StyleSheet.create return type does not match RN StyleSheet.create, so we have to patch this.
+jest.mock('react-native-web', () => ({
+  ...jest.requireActual('react-native-web'),
+  StyleSheet: {
+    ...jest.requireActual('react-native-web').StyleSheet,
+    create(obj) {
+      // This matches the 0.64 implementation: https://github.com/facebook/react-native/blob/0.64-stable/Libraries/StyleSheet/StyleSheet.js#L360-L373
+      return obj
+    }
+  }
+}))
+
 test('basic', () => {
   expect(
     StyleSheet.flatten(css`
@@ -128,6 +141,14 @@ test('falsy value in the middle', () => {
       background-color: hotpink;
     `)
   ).toEqual({ backgroundColor: 'hotpink' })
+})
+
+test('number value interpolation in tagged template literals', () => {
+  expect(
+    css`
+      padding-top: ${10}px;
+    `
+  ).toEqual({ paddingTop: 10 })
 })
 
 test('composition', () => {

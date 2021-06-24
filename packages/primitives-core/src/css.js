@@ -44,9 +44,11 @@ function handleInterpolation(interpolation: *, i: number, arr: Array<*>) {
     return
   }
   let isIrrelevant = interpolation == null || type === 'boolean'
-  let isRnStyle =
-    (type === 'object' && !Array.isArray(interpolation)) || type === 'number'
-  if (lastType === 'string' && (isRnStyle || isIrrelevant)) {
+  let isRnStyle = type === 'object' && !Array.isArray(interpolation)
+  if (
+    (lastType === 'string' || lastType === 'number') &&
+    (isRnStyle || isIrrelevant)
+  ) {
     let converted = convertStyles(buffer)
     if (converted !== undefined) {
       styles.push(converted)
@@ -57,7 +59,7 @@ function handleInterpolation(interpolation: *, i: number, arr: Array<*>) {
     return
   }
 
-  if (type === 'string') {
+  if (type === 'string' || type === 'number') {
     buffer += interpolation
 
     if (arr.length - 1 === i) {

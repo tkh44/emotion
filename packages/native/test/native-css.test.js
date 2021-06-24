@@ -3,6 +3,19 @@ import { StyleSheet } from 'react-native'
 
 jest.mock('react-native')
 
+// We're aliasing react-native to react-native-web for the tests (via `babel-plugin-react-native-web`),
+// but RNW StyleSheet.create return type does not match RN StyleSheet.create, so we have to patch this.
+jest.mock('react-native-web', () => ({
+  ...jest.requireActual('react-native-web'),
+  StyleSheet: {
+    ...jest.requireActual('react-native-web').StyleSheet,
+    create(obj) {
+      // This matches the 0.64 implementation: https://github.com/facebook/react-native/blob/0.64-stable/Libraries/StyleSheet/StyleSheet.js#L360-L373
+      return obj
+    }
+  }
+}))
+
 let returnArguments = (...args) => args
 
 describe('Emotion native css', () => {
