@@ -1,4 +1,5 @@
 const JSX_ANNOTATION_REGEX = /\*?\s*@jsx\s+([^\s]+)/
+const JSX_IMPORT_SOURCE_REGEX = /\*?\s*@jsxImportSource\s+([^\s]+)/
 
 // TODO: handling this case
 // <div css={`color:hotpink;`} />
@@ -7,9 +8,66 @@ const JSX_ANNOTATION_REGEX = /\*?\s*@jsx\s+([^\s]+)/
 
 export default {
   meta: {
-    fixable: 'code'
+    fixable: 'code',
+    schema: {
+      type: 'array',
+      items: {
+        oneOf: [
+          {
+            type: 'string'
+          },
+          {
+            type: 'object',
+            properties: {
+              runtime: { type: 'string' },
+              importSource: { type: 'string' }
+            },
+            required: ['runtime'],
+            additionalProperties: false
+          }
+        ]
+      },
+      uniqueItems: true,
+      minItems: 0
+    }
   },
   create(context) {
+    const jsxRuntimeMode = context.options.find(
+      option => option && option.runtime === 'automatic'
+    )
+
+    if (jsxRuntimeMode) {
+      return {
+        JSXAttribute(node) {
+          if (node.name.name !== 'css') {
+            return
+          }
+          let hasJsxImportSource = false
+          let sourceCode = context.getSourceCode()
+          let pragma = sourceCode
+            .getAllComments()
+            .find(node => JSX_IMPORT_SOURCE_REGEX.test(node.value))
+          hasJsxImportSource =
+            pragma && pragma.value.match(JSX_IMPORT_SOURCE_REGEX)
+          if (!hasJsxImportSource) {
+            context.report({
+              node,
+              message:
+                'The css prop can only be used if you set @jsxImportSource pragma',
+              fix(fixer) {
+                return fixer.insertTextBefore(
+                  sourceCode.ast.body[0],
+                  `/** @jsxImportSource ${
+                    (jsxRuntimeMode || {}).importSource || '@emotion/react'
+                  } */\n`
+                )
+              }
+            })
+          }
+        }
+      }
+    }
+
     return {
       JSXAttribute(node) {
         if (node.name.name !== 'css') {

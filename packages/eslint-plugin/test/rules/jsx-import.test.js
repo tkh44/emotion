@@ -30,6 +30,45 @@ ruleTester.run('emotion jsx', rule, {
       `
     },
     {
+      options: [{ runtime: 'classic' }],
+      code: `
+      // @jsx jsx
+      import { jsx } from '@emotion/react'
+      let ele = <div css={{}} />
+      `
+    },
+    {
+      options: [{ runtime: 'invalidRuntime' }],
+      code: `
+      // @jsx jsx
+      import { jsx } from '@emotion/react'
+      let ele = <div css={{}} />
+      `
+    },
+    {
+      options: [{ runtime: 'automatic' }],
+      code: `
+      /** @jsxImportSource @emotion/react */
+
+      let ele = <div css={{}} />
+      `
+    },
+    {
+      options: [{ runtime: 'automatic' }],
+      code: `
+      // no css prop usage for test coverage
+      let ele = <div nonecss={{}} />
+      `
+    },
+    {
+      options: [{ runtime: 'automatic', importSource: '@emotion/react' }],
+      code: `
+      /** @jsxImportSource @emotion/react */
+
+      let ele = <div css={{}} />
+      `
+    },
+    {
       code: `
 
       let ele = <div notCss={{}} />
@@ -51,6 +90,55 @@ let ele = <div css={{}} />
       ],
       output: `
 // @jsx jsx
+import { jsx } from '@emotion/react'
+let ele = <div css={{}} />
+            `.trim()
+    },
+    {
+      options: [{ runtime: 'automatic' }],
+      code: `
+let ele = <div css={{}} />
+      `.trim(),
+      errors: [
+        {
+          message:
+            'The css prop can only be used if you set @jsxImportSource pragma'
+        }
+      ],
+      output: `
+/** @jsxImportSource @emotion/react */
+let ele = <div css={{}} />
+            `.trim()
+    },
+    {
+      options: [{ runtime: 'automatic', importSource: '@iChenLei/react' }],
+      code: `
+let ele = <div css={{}} />
+      `.trim(),
+      errors: [
+        {
+          message:
+            'The css prop can only be used if you set @jsxImportSource pragma'
+        }
+      ],
+      output: `
+/** @jsxImportSource @iChenLei/react */
+let ele = <div css={{}} />
+            `.trim()
+    },
+    {
+      options: [{ runtime: 'classic' }],
+      code: `
+let ele = <div css={{}} />
+      `.trim(),
+      errors: [
+        {
+          message:
+            'The css prop can only be used if jsx from @emotion/react is imported and it is set as the jsx pragma'
+        }
+      ],
+      output: `
+/** @jsx jsx */
 import { jsx } from '@emotion/react'
 let ele = <div css={{}} />
             `.trim()
