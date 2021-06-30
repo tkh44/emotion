@@ -15,7 +15,7 @@ exports[`composing components 1`] = `
 }
 
 <button
-  className="emotion-0 emotion-1"
+  className="emotion-0 emotion-1 emotion-2 emotion-3"
 >
   hello world
 </button>
@@ -31,7 +31,7 @@ exports[`composition 1`] = `
 }
 
 <h1
-  className="legacy__class emotion-0 emotion-1"
+  className="legacy__class emotion-0 emotion-1 emotion-2"
   scale={2}
 >
   hello world
@@ -45,7 +45,7 @@ exports[`composition 2`] = `
 }
 
 <h1
-  className="legacy__class emotion-0 emotion-1"
+  className="legacy__class emotion-0 emotion-1 emotion-2"
 >
   hello world
 </h1>
@@ -100,7 +100,7 @@ exports[`composition with objects 1`] = `
 }
 
 <h1
-  className="legacy__class emotion-0 emotion-1"
+  className="legacy__class emotion-0 emotion-1 emotion-2"
   scale={2}
 >
   hello world
@@ -120,7 +120,7 @@ exports[`glamorous style api & composition 1`] = `
 }
 
 <h1
-  className="emotion-0 emotion-1"
+  className="emotion-0 emotion-1 emotion-2"
   fontSize={20}
 >
   hello world

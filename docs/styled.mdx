@@ -102,13 +102,21 @@ const Parent = styled.div`
     color: green;
   }
 `
+const ReusedChild = styled(Child)`
+    border: 1px grey solid;
+`;
 
 render(
   <div>
     <Parent>
       <Child>Green because I am inside a Parent</Child>
+      <br />
+      <ReusedChild>Green because I am also inside a Parent</ReusedChild>
+      <br />
     </Parent>
     <Child>Red because I am not inside a Parent</Child>
+    <br />
+    <ReusedChild>Red because I am also not inside a Parent</ReusedChild>
   </div>
 )
 ```

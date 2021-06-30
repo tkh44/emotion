@@ -31,6 +31,7 @@ export type PrivateStyledComponent<Props> = StyledComponent<Props> & {
   __emotion_real: StyledComponent<Props>,
   __emotion_base: any,
   __emotion_styles: any,
+  __emotion_forward_className: any,
   __emotion_forwardProp: any
 }
 

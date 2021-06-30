@@ -2,7 +2,7 @@
 
 exports[`composes shouldForwardProp on composed styled components 1`] = `
 <div
-  className="emotion-0 emotion-1"
+  className="emotion-0 emotion-1 emotion-2"
   xyz={true}
 />
 `;
@@ -100,7 +100,7 @@ exports[`prop filtering on composed styled components that are string tags 1`] =
 
 <a
   aria-label="some label"
-  className="emotion-0 emotion-1"
+  className="emotion-0 emotion-1 emotion-2"
   data-wow="value"
   for="other reasons"
   href="link"
@@ -126,7 +126,7 @@ Array [
 }
 
 <div
-    className="emotion-0 emotion-1"
+    className="emotion-0 emotion-1 emotion-2"
     id="test-2"
   />,
 ]
