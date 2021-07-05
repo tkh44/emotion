@@ -2,7 +2,7 @@ let React = require('react')
 let styled = require('@emotion/styled').default
 let { renderToString } = require('react-dom/server')
 let Benchmark = require('benchmark')
-let { jsx, css, CacheProvider } = require('@emotion/react')
+let { jsx, css, CacheProvider, EmotionCacheContext } = require('@emotion/react')
 let { createTriangle } = require('./triangle')
 let { css: cssClassName } = require('@emotion/css')
 let { renderStylesToString } = require('@emotion/server')
@@ -70,13 +70,11 @@ let CssFuncTriangle = createTriangle(({ x, y, size, color, ...props }) => {
     ...props
   })
 })
-// $FlowFixMe
-let CacheContext = CacheProvider._context
 
 let hasOwnProperty = Object.prototype.hasOwnProperty
 
 let ExperimentTriangle = createTriangle(({ x, y, size, color, ...props }) => {
-  let cache = CacheContext._currentValue
+  let cache = EmotionCacheContext._currentValue
 
   let className = ''
   const serialized = css`

@@ -5,7 +5,7 @@ import { useContext, forwardRef } from 'react'
 import createCache from '@emotion/cache'
 import { isBrowser } from './utils'
 
-let EmotionCacheContext: React.Context<EmotionCache | null> =
+export let EmotionCacheContext: React.Context<EmotionCache | null> =
   /* #__PURE__ */ React.createContext(
     // we're doing this to avoid preconstruct's dead code elimination in this one case
     // because this module is primarily intended for the browser and node

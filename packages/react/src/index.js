@@ -1,7 +1,7 @@
 // @flow
 import pkg from '../package.json'
 export type { SerializedStyles } from '@emotion/utils'
-export { withEmotionCache, CacheProvider } from './context'
+export { withEmotionCache, CacheProvider, EmotionCacheContext } from './context'
 export { jsx } from './jsx'
 export { jsx as createElement } from './jsx'
 export { Global } from './global'
