@@ -1,4 +1,4 @@
-let unitlessKeys /*: { [key: string]: 1 } */ = {
+let unitlessKeys = {
   animationIterationCount: 1,
   borderImageOutset: 1,
   borderImageSlice: 1,
@@ -46,6 +46,6 @@ let unitlessKeys /*: { [key: string]: 1 } */ = {
   strokeMiterlimit: 1,
   strokeOpacity: 1,
   strokeWidth: 1
-}
+} as const
 
 export default unitlessKeys
