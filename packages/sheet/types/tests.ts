@@ -1,4 +1,4 @@
-import { StyleSheet } from '@emotion/sheet'
+import { StyleSheet } from '../src'
 
 new StyleSheet({
   key: 'abc',
@@ -32,6 +32,7 @@ const styleSheet0 = new StyleSheet({
   container: document.createElement('div')
 })
 const styleSheet1: StyleSheet = styleSheet0
+// $ExpectError Options must be defined
 const styleSheet2: StyleSheet = new StyleSheet()
 
 const styleSheet = new StyleSheet({

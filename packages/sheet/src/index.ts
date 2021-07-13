@@ -21,7 +21,19 @@ styleSheet.flush()
 
 */
 
-function sheetForTag(tag /*: HTMLStyleElement */) /*: CSSStyleSheet */ {
+function assertDefined<T>(
+  value: T | undefined | null,
+  name: string
+): asserts value is T {
+  // skip the check in production
+  if (process.env.NODE_ENV === 'production') return
+
+  if (value == null) {
+    throw new Error(`${name} was not defined`)
+  }
+}
+
+function sheetForTag(tag: HTMLStyleElement): CSSStyleSheet | undefined {
   if (tag.sheet) {
     return tag.sheet
   }
@@ -35,22 +47,18 @@ function sheetForTag(tag /*: HTMLStyleElement */) /*: CSSStyleSheet */ {
   }
 }
 
-/*
 export type Options = {
-  nonce?: string,
-  key: string,
-  container: HTMLElement,
-  speedy?: boolean,
+  nonce?: string
+  key: string
+  container: HTMLElement
+  speedy?: boolean
   prepend?: boolean
 }
-*/
 
-function createStyleElement(
-  options /*: {
-  key: string,
-  nonce: string | void
-} */
-) /*: HTMLStyleElement */ {
+function createStyleElement(options: {
+  key: string
+  nonce?: string
+}): HTMLStyleElement {
   let tag = document.createElement('style')
   tag.setAttribute('data-emotion', options.key)
   if (options.nonce !== undefined) {
@@ -62,15 +70,16 @@ function createStyleElement(
 }
 
 export class StyleSheet {
-  isSpeedy /*: boolean */
-  ctr /*: number */
-  tags /*: HTMLStyleElement[] */
-  container /*: HTMLElement */
-  key /*: string */
-  nonce /*: string | void */
-  prepend /*: boolean | void */
-  before /*: Element | null */
-  constructor(options /*: Options */) {
+  isSpeedy: boolean
+  ctr: number
+  tags: HTMLStyleElement[]
+  container: HTMLElement
+  key: string
+  nonce: string | undefined
+  prepend: boolean | undefined
+  before: Element | null
+  private _alreadyInsertedOrderInsensitiveRule: boolean | undefined = undefined
+  constructor(options: Options) {
     this.isSpeedy =
       options.speedy === undefined
         ? process.env.NODE_ENV === 'production'
@@ -85,7 +94,7 @@ export class StyleSheet {
     this.before = null
   }
 
-  _insertTag = (tag /*: HTMLStyleElement */) => {
+  private _insertTag = (tag: HTMLStyleElement) => {
     let before
     if (this.tags.length === 0) {
       before = this.prepend ? this.container.firstChild : this.before
@@ -96,11 +105,11 @@ export class StyleSheet {
     this.tags.push(tag)
   }
 
-  hydrate(nodes /*: HTMLStyleElement[] */) {
+  hydrate(nodes: HTMLStyleElement[]): void {
     nodes.forEach(this._insertTag)
   }
 
-  insert(rule /*: string */) {
+  insert(rule: string): void {
     // the max length is how many rules we have per style tag, it's 65000 in speedy mode
     // it's 1 in dev because we insert source maps that map a single rule to a location
     // and you can only have one source map per style tag
@@ -130,6 +139,7 @@ export class StyleSheet {
 
     if (this.isSpeedy) {
       const sheet = sheetForTag(tag)
+      assertDefined(sheet, 'sheet')
       try {
         // this is the ultrafast version, works across browsers
         // the big drawback is that the css won't be editable in devtools
@@ -153,8 +163,12 @@ export class StyleSheet {
     this.ctr++
   }
 
-  flush() {
-    this.tags.forEach(tag => tag.parentNode.removeChild(tag))
+  flush(): void {
+    this.tags.forEach(tag => {
+      const { parentNode } = tag
+      assertDefined(parentNode, 'tag.parentNode')
+      parentNode.removeChild(tag)
+    })
     this.tags = []
     this.ctr = 0
     if (process.env.NODE_ENV !== 'production') {
