@@ -2,14 +2,25 @@
 import 'test-utils/dev-mode'
 import * as React from 'react'
 import { render, unmountComponentAtNode } from 'react-dom'
-import { Global, keyframes, css, CacheProvider } from '@emotion/react'
+import {
+  Global,
+  keyframes,
+  css,
+  CacheProvider,
+  ThemeProvider
+} from '@emotion/react'
 import createCache from '@emotion/cache'
+
+// $FlowFixMe
+console.error = jest.fn()
 
 beforeEach(() => {
   // $FlowFixMe
   document.head.innerHTML = ''
   // $FlowFixMe
   document.body.innerHTML = `<div id="root"></div>`
+
+  jest.resetAllMocks()
 })
 
 test('basic', () => {
@@ -66,4 +77,30 @@ test('updating more than 1 global rule', () => {
   expect(document.head).toMatchSnapshot()
   renderComponent({ background: 'gray', color: 'white' })
   expect(document.head).toMatchSnapshot()
+})
+
+test('no React hook order violations', () => {
+  const theme = { color: 'blue' }
+  const cache = createCache({ key: 'context' })
+
+  // $FlowFixMe
+  const Comp = ({ flag }) => (
+    <ThemeProvider theme={theme}>
+      <CacheProvider value={cache}>
+        <Global
+          styles={
+            flag &&
+            (t => css`
+              color: ${t.color};
+            `)
+          }
+        />
+      </CacheProvider>
+    </ThemeProvider>
+  )
+
+  render(<Comp />, document.getElementById('root'))
+  expect(console.error).not.toHaveBeenCalled()
+  render(<Comp flag />, document.getElementById('root'))
+  expect(console.error).not.toHaveBeenCalled()
 })
