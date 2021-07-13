@@ -18,6 +18,10 @@ let EmotionCacheContext: React.Context<EmotionCache | null> =
       : null
   )
 
+if (process.env.NODE_ENV !== 'production') {
+  EmotionCacheContext.displayName = 'EmotionCacheContext'
+}
+
 export let CacheProvider = EmotionCacheContext.Provider
 
 let withEmotionCache = function withEmotionCache<Props, Ref: React.Ref<*>>(
