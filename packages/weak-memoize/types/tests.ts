@@ -1,4 +1,4 @@
-import weakMemoize from '@emotion/weak-memoize'
+import weakMemoize from '../src'
 
 interface Foo {
   bar: 'xyz'
