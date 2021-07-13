@@ -4,7 +4,7 @@
   "description": "emotion's memoize utility",
   "main": "dist/emotion-memoize.cjs.js",
   "module": "dist/emotion-memoize.esm.js",
-  "types": "types/index.d.ts",
+  "types": "dist/declarations/src/index.d.ts",
   "license": "MIT",
   "repository": "https://github.com/emotion-js/emotion/tree/main/packages/memoize",
   "scripts": {

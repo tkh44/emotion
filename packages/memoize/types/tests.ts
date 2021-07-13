@@ -1,4 +1,4 @@
-import memoize from '@emotion/memoize'
+import memoize from '../src'
 
 // $ExpectType string[]
 memoize((arg: string) => [arg])('foo')

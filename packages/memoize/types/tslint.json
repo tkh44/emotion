@@ -18,6 +18,7 @@
     ],
 
     "no-unnecessary-generics": false,
-    "strict-export-declare-modifiers": false
+    "strict-export-declare-modifiers": false,
+    "no-default-import": false
   }
 }

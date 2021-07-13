@@ -1,7 +1,7 @@
 module.exports = {
   transform: {
     '\\.css$': '<rootDir>/test/styleTransform.js',
-    '^.+\\.js?$': 'babel-jest'
+    '^.+\\.(tsx|ts|js)?$': 'babel-jest'
   },
   watchPlugins: [
     'jest-watch-typeahead/filename',
