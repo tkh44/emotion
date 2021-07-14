@@ -1,8 +1,6 @@
 import memoize from '@emotion/memoize'
 
-/*
-declare var codegen: { require: string => RegExp }
-*/
+declare const codegen: { require: (path: string) => RegExp }
 
 // eslint-disable-next-line no-undef
 const reactPropsRegex = codegen.require('./props')
