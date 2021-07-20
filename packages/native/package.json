@@ -19,7 +19,7 @@
     "@types/react-native": "^0.63.2",
     "dtslint": "^0.3.0",
     "react": "16.14.0",
-    "react-native": "^0.63.2"
+    "react-native": "^0.64.1"
   },
   "dependencies": {
     "@emotion/primitives-core": "^11.0.0"
